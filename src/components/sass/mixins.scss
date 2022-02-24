@@ -1,0 +1,24 @@
+@mixin button($color) {
+    background-color: $color;
+    width: 220px;
+    padding: 6px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+@mixin div_with_span_and_input($justifyContent) {
+    display: flex;
+    justify-content: $justifyContent;
+    align-items: center;
+    width: 450px;
+}
+
+@mixin input {
+    width: 270px;
+    padding: 4px;
+    border: 1px solid #a39d9d;
+    outline: none;
+    font-size: 17px;
+    margin: 8px 0px;
+}

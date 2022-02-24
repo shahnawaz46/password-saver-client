@@ -1,0 +1,203 @@
+@import '../sass/mixins.scss'; 
+
+.home-main-div{
+    text-align: center;
+}
+
+.home-logout-button-div{
+    text-align: end;
+    margin-top: 8px;
+    margin-right: 8px;
+}
+
+.home-logout-button-div > button{
+    width: 100px;
+    padding: 4px;
+    font-size: 16px;
+    border: none;
+    background-color: red;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.home-main-div > h2{
+    font-weight: 500;
+    margin: 20px 10px;
+}
+
+.home-div{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.home-create-password, .home-save-password, .home-get-password{
+    margin: 10px;
+}
+
+.home-create-password > button{
+    @include button(#ED8650)
+}
+
+.home-save-password > button{
+    @include button(#00CED1)
+}
+
+.home-get-password > button{
+    @include button(#169C59)
+}
+
+.save, .get, .create{  
+    // border: 1px solid black;
+    margin-top: 60px;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-password-length{
+    width: 270px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.save > h3, .get > h3{
+    text-transform: capitalize;
+    font-weight: 600;
+    margin: 0px 10px;
+    margin-bottom: 10px;
+}
+
+.save-website-name, .save-user-name, .save-password{
+    @include div_with_span_and_input(space-between)
+}
+
+.save-span, .get-span{
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.save-input , .get-input, .create-input{
+    @include input
+}
+
+.save-button-div , .get-button-div{
+    @include div_with_span_and_input(flex-end);
+    margin-top: 8px
+}
+
+.save-button, .get-button, .create-button{
+    @include button(#0286ba);
+    width: 270px;
+    color: white;
+}
+
+.get-website-name{
+    @include div_with_span_and_input(space-between)
+}
+
+.get-user-name-password-div{
+    display: flex;
+    justify-content: flex-end;
+    width: 450px;
+}
+
+.get-user-name-password{    
+    width: 270px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4px;
+    border: 1px solid #a39d9d;
+}
+
+
+@media only screen and (max-width:500px) {
+    .home-div{
+        flex-direction: column;
+    }
+
+    .home-main-div > h2{
+        font-size: 21px;
+    }
+
+    .home-create-password > button, .home-save-password > button, .home-get-password > button{
+        width: 100%;
+        padding: 8px;
+    }
+
+    .save > h3, .get > h3{
+        font-size: 18px;
+    }
+
+    .save-span, .get-span{
+        display: none;
+    }
+
+    .save-website-name, .save-user-name, .save-password {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .save-input, .get-input, .create-input {
+        width: 80%;
+        padding: 6px;
+    }
+
+    .save-button-div, .get-button-div {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .save-button, .get-button, .create-button {
+        width: 80%;
+        padding: 8px;
+    }
+
+    .get-website-name{
+       justify-content: center;
+       width: 100%;
+    }
+
+    .get-user-name-password-div {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .get-user-name-password {
+        width: 80%;
+    }
+
+    .save, .get, .create {
+        margin-top: 20px;
+    }
+
+    .create-password-length {
+        width: 100%;
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (max-width:360px) {
+    .home-main-div > h2 {
+        font-size: 18px;
+    }
+
+    .home-create-password > button, .home-save-password > button, .home-get-password > button {
+       font-size: 17px;
+    }
+
+    .save > h3, .get > h3 {
+        font-size: 16px;
+    }
+
+    .save-input, .get-input, .create-input {
+        font-size: 16px;
+    }
+}
