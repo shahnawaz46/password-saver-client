@@ -82,13 +82,28 @@
     text-transform: capitalize;
 }
 
-.save-input , .get-input, .create-input{
+.save-input , .create-input{
     @include input
+}
+
+.get-input-div{
+    border: 1px solid #a39d9d;  
+    margin: 8px 0px;
+    display: flex;
+    align-items: center;
+    width: 270px;
+}
+
+.get-input{
+    @include input;
+    border: none;
+    margin: 0px;
+    width: 100%;
 }
 
 .save-button-div , .get-button-div{
     @include div_with_span_and_input(flex-end);
-    margin-top: 8px
+    margin-top: 8px;
 }
 
 .save-button, .get-button, .create-button{
@@ -145,7 +160,11 @@
         width: 100%;
     }
 
-    .save-input, .get-input, .create-input {
+    .get-input-div{
+        width: 80%;
+    }
+
+    .save-input, .create-input {
         width: 80%;
         padding: 6px;
     }

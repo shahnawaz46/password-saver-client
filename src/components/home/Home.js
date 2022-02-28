@@ -3,6 +3,7 @@ import './Home.scss'
 import { axiosInstance } from '../../axios/Axios'
 import ShowError from '../show_error/ShowError'
 import { useNavigate } from 'react-router-dom'
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 const Home = () => {
     const navigate = useNavigate()
@@ -55,24 +56,35 @@ const Home = () => {
             return
         }
 
+        let hashUserName = '';
+        let hashPassword = '';
+
+        for (let i = 0; i < userName.length; i++) {
+            hashUserName += (userName.charCodeAt(i) / process.env.REACT_APP_NUMBER_1 * process.env.REACT_APP_NUMBER_2).toString() + '-'
+        }
+
+        for (let i = 0; i < password.length; i++) {
+            hashPassword += (password.charCodeAt(i) / process.env.REACT_APP_NUMBER_1 * process.env.REACT_APP_NUMBER_2).toString() + '-'
+        }
+
         const detail = {
             websiteName,
-            userName,
-            password
+            userName: hashUserName,
+            password: hashPassword
         }
 
         try {
             const res = await axiosInstance.post('/api/save/password', detail)
             setError({ type: "success", message: res.data.message });
 
+            setWebsiteName('')
+            setUserName('')
+            setPassword('')
+
         } catch (error) {
             error.response &&
                 setError({ type: "error", message: error.response.data.err });
         }
-
-        setWebsiteName('')
-        setUserName('')
-        setPassword('')
     }
 
     const getPassword = async () => {
@@ -91,16 +103,31 @@ const Home = () => {
             let hashPassword = ''
 
             for (let j = 0; j < userName.length - 1; j++) {
-                hashUserName += String.fromCharCode(Math.round((userName[j] * 0.43710342) / 59.602))
+                hashUserName += String.fromCharCode(Math.round((userName[j] * process.env.REACT_APP_NUMBER_1) / process.env.REACT_APP_NUMBER_2))
             }
 
             for (let j = 0; j < password.length - 1; j++) {
-                hashPassword += String.fromCharCode(Math.round((password[j] * 0.43710342) / 59.602))
+                hashPassword += String.fromCharCode(Math.round((password[j] * process.env.REACT_APP_NUMBER_1) / process.env.REACT_APP_NUMBER_2))
             }
 
             // setWebsiteName(res.data.websiteName)
             getUserN(hashUserName)
             getPass(hashPassword)
+
+        } catch (error) {
+            error.response &&
+                setError({ type: "error", message: error.response.data.err });
+        }
+    }
+
+    const deleteWebsite = async () => {
+        try {
+            const res = await axiosInstance.post('/api/delete/website', { webName })
+            setError({ type: "success", message: res.data.message });
+
+            getWebName('')
+            getUserN('')
+            getPass('')
 
         } catch (error) {
             error.response &&
@@ -173,7 +200,10 @@ const Home = () => {
                         <h3>enter website name to get user name and password</h3>
                         <div className="get-website-name">
                             <span className='get-span'>website name : </span>
-                            <input type="text" placeholder='website name' className='get-input' value={webName || ''} onChange={(e) => getWebName(e.target.value)} />
+                            <div className='get-input-div'>
+                                <input type="text" placeholder='website name' className='get-input' value={webName || ''} onChange={(e) => getWebName(e.target.value)} />
+                                <DeleteOutlineOutlinedIcon onClick={deleteWebsite} />
+                            </div>
                         </div>
                         <div className='get-user-name-password-div'>
                             <div className="get-user-name-password">
@@ -181,12 +211,7 @@ const Home = () => {
                                 <span>{pass}</span>
                             </div>
                         </div>
-                        {/* <div className="get-user-name">
-                            <input className='get-input' value={userName || ''} readOnly />
-                        </div>
-                        <div className="get-password">
-                            <input className='get-input' value={password || ''} readOnly />
-                        </div> */}
+
                         <div className="get-button-div">
                             <button onClick={getPassword} className='get-button'>get password</button>
                         </div>
