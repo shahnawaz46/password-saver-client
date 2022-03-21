@@ -59,6 +59,8 @@ const Home = () => {
         let hashUserName = '';
         let hashPassword = '';
 
+
+        // create a file .env.local in your root directory and add REACT_APP_NUMBER_1 = YOUR NUMBER FOR ENCRYPTING/DECRYPTING PASSWORD
         for (let i = 0; i < userName.length; i++) {
             hashUserName += (userName.charCodeAt(i) / process.env.REACT_APP_NUMBER_1 * process.env.REACT_APP_NUMBER_2).toString() + '-'
         }
@@ -136,7 +138,7 @@ const Home = () => {
     }
 
     const logout = () => {
-        sessionStorage.removeItem("userLogin")
+        sessionStorage.removeItem("p_s_user")
         navigate("/login", { replace: true })
     }
 
@@ -144,6 +146,7 @@ const Home = () => {
         <>
             <div className="home-main-div">
                 <div className="home-logout-button-div">
+                    <span style={{ fontSize: '20px', textTransform: 'capitalize' }}>{sessionStorage.getItem("p_s_user") && JSON.parse(sessionStorage.getItem("p_s_user")).name}</span>
                     <button onClick={logout}>Logout</button>
                 </div>
                 <h2>Here You Can Create Password and Store Password</h2>

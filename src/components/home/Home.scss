@@ -5,9 +5,10 @@
 }
 
 .home-logout-button-div{
-    text-align: end;
-    margin-top: 8px;
-    margin-right: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px;
 }
 
 .home-logout-button-div > button{
