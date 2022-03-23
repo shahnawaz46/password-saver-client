@@ -5,7 +5,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { axiosInstance } from '../../axios/Axios';
 import ShowError from '../show_error/ShowError';
 
-const Login = () => {
+const Signup = () => {
     const navigate = useNavigate()
 
     const [name, setName] = useState()
@@ -25,7 +25,7 @@ const Login = () => {
             const res = await axiosInstance.post('/api/signup', { name, email, number })
 
             sessionStorage.setItem("id", res.data._id)
-            navigate('/otp', { replace: true })
+            navigate('/otp')
             return
 
         } catch (error) {
@@ -68,4 +68,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Signup

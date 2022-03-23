@@ -7,11 +7,10 @@
     cursor: pointer;
 }
 
-@mixin div_with_span_and_input($justifyContent) {
+@mixin displayFlex($justifyContent) {
     display: flex;
     justify-content: $justifyContent;
     align-items: center;
-    width: 450px;
 }
 
 @mixin input {

@@ -23,7 +23,7 @@ const Login = () => {
             const res = await axiosInstance.post('/api/login', { email })
 
             sessionStorage.setItem("id", res.data._id)
-            navigate('/otp', { replace: true })
+            navigate('/otp')
             return
 
         } catch (error) {

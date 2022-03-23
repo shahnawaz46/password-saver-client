@@ -1,13 +1,12 @@
-@import '../sass/mixins.scss'; 
+@import '../sass/mixins'; 
+@import '../sass/variables';
 
 .home-main-div{
     text-align: center;
 }
 
 .home-logout-button-div{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include displayFlex(space-between);
     margin: 8px;
 }
 
@@ -50,21 +49,17 @@
 }
 
 .save, .get, .create{  
-    // border: 1px solid black;
     margin-top: 60px;
     margin-bottom: 10px;
     width: 100%;
-    display: flex;
+    @include displayFlex(center);
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .create-password-length{
     width: 270px;
     margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
+    @include displayFlex(space-between);
 }
 
 .save > h3, .get > h3{
@@ -75,7 +70,8 @@
 }
 
 .save-website-name, .save-user-name, .save-password{
-    @include div_with_span_and_input(space-between)
+    @include displayFlex(space-between);
+    width: $div-lg-width;
 }
 
 .save-span, .get-span{
@@ -92,7 +88,7 @@
     margin: 8px 0px;
     display: flex;
     align-items: center;
-    width: 270px;
+    width: $input-lg-width;
 }
 
 .get-input{
@@ -103,28 +99,29 @@
 }
 
 .save-button-div , .get-button-div{
-    @include div_with_span_and_input(flex-end);
+    @include displayFlex(flex-end);
+    width: $div-lg-width;
     margin-top: 8px;
 }
 
 .save-button, .get-button, .create-button{
     @include button(#0286ba);
-    width: 270px;
+    width: $input-lg-width;
     color: white;
 }
 
 .get-website-name{
-    @include div_with_span_and_input(space-between)
+    @include displayFlex(space-between);
+    width: $div-lg-width;
 }
 
 .get-user-name-password-div{
-    display: flex;
-    justify-content: flex-end;
-    width: 450px;
+    @include displayFlex(flex-end);
+    width: $div-lg-width;
 }
 
 .get-user-name-password{    
-    width: 270px;
+    width: $input-lg-width;
     height: 60px;
     display: flex;
     flex-direction: column;
@@ -144,7 +141,7 @@
     }
 
     .home-create-password > button, .home-save-password > button, .home-get-password > button{
-        width: 100%;
+        width: $div-sm-width;
         padding: 8px;
     }
 
@@ -158,40 +155,35 @@
 
     .save-website-name, .save-user-name, .save-password {
         justify-content: center;
-        width: 100%;
+        width: $div-sm-width;
     }
 
     .get-input-div{
-        width: 80%;
+        width: $input-sm-width;
     }
 
     .save-input, .create-input {
-        width: 80%;
+        width: $input-sm-width;
         padding: 6px;
     }
 
     .save-button-div, .get-button-div {
         justify-content: center;
-        width: 100%;
+        width: $div-sm-width;
     }
 
     .save-button, .get-button, .create-button {
-        width: 80%;
+        width: $input-sm-width;
         padding: 8px;
     }
 
-    .get-website-name{
+    .get-website-name, .get-user-name-password-div{
        justify-content: center;
-       width: 100%;
-    }
-
-    .get-user-name-password-div {
-        justify-content: center;
-        width: 100%;
+       width: $div-sm-width;
     }
 
     .get-user-name-password {
-        width: 80%;
+        width: $input-sm-width;
     }
 
     .save, .get, .create {
@@ -199,7 +191,7 @@
     }
 
     .create-password-length {
-        width: 100%;
+        width: $div-sm-width;
         justify-content: space-evenly;
     }
 }
