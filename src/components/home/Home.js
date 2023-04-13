@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 const Home = () => {
+    // console.log(process.env.REACT_APP_NUMBER_1)
     const navigate = useNavigate()
 
     const [field, setField] = useState()
@@ -96,7 +97,7 @@ const Home = () => {
         }
 
         try {
-            const res = await axiosInstance.post('/api/get/password', { webName })
+            const res = await axiosInstance.get(`/api/get/password/${webName}`)
 
             const userName = res.data.userName.split('-')
             const password = res.data.password.split('-')
@@ -124,7 +125,7 @@ const Home = () => {
 
     const deleteWebsite = async () => {
         try {
-            const res = await axiosInstance.post('/api/delete/website', { webName })
+            const res = await axiosInstance.delete('/api/delete/website', {data: { webName }})
             setError({ type: "success", message: res.data.message });
 
             getWebName('')

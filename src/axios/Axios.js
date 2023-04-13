@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'https://save-server.herokuapp.com'
+const url = 'https://api-orbitius-password.onrender.com'
 // const url = 'http://localhost:9000'
 
 export const axiosInstance = axios.create({
